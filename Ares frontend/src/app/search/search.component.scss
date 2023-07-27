@@ -1,0 +1,39 @@
+#search {
+	display: grid;
+	grid-template-rows: 80px 1fr;
+	padding: 10px;
+	box-sizing: border-box;
+	height: calc(100vh - 85px);
+
+	background-color: orange;
+}
+
+#searchForm {
+	display: grid;
+	width: 100%;
+	grid-template-columns: repeat(4, 1fr) 56px;
+	gap: 10px
+}
+
+#searchResults {
+	height: calc(100vh - 185px);
+	overflow-y: auto;
+}
+
+#searchButton {
+	height: 30px;
+}
+
+.selectControls {
+	button {
+		cursor: auto;
+		pointer-events: auto;
+		color: blue;
+	}
+}
+
+.loading {
+	justify-self: center;
+}
+
+

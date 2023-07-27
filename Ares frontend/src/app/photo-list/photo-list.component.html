@@ -1,0 +1,4 @@
+<div class="photo" *ngFor="let photo of photos">
+	<img [src]="photo.imgSrc">
+	<img class="overlayIcon" (click)="photoService.toggleFavorite(photo)" [src]="photo.favorite? 'assets/star-solid.svg':'assets/star-regular.svg'" alt="Star Icon"/>
+</div>

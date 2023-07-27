@@ -1,0 +1,7 @@
+<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+    <input type="image" src="../../assets/right-from-bracket-solid.svg" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })"/>
+  </ng-container>
+
+  <ng-template #loggedOut>
+    <input type="image" src="../../assets/right-to-bracket-solid.svg" (click)="auth.loginWithPopup()"/>
+  </ng-template>

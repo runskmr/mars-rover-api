@@ -1,0 +1,14 @@
+<app-header></app-header>
+<app-nav-bar></app-nav-bar>
+<div id="latestPhotos">
+	<ng-container *ngIf="!photoService.isLoading; else loading">
+		<div class="rover" *ngFor="let rover of photoService.latestPhotos">
+			<div class="roverHeader" [class]="rover.roverName">{{rover.roverName}}</div>
+			<app-photo-list [photos]=rover.roverPhotos></app-photo-list>
+		</div>
+	</ng-container>
+</div>
+
+<ng-template #loading>
+	<img class="loading" src="assets/loading-spinner.svg" alt="Loading Spinner"/>
+</ng-template>

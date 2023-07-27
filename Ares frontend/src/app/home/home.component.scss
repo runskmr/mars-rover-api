@@ -1,0 +1,45 @@
+#latestPhotos {
+	display: grid;
+	grid-template-rows: auto auto;
+	gap: 20px;
+	height: calc(100vh - 85px);
+	overflow-y: auto;
+	padding: 10px;
+	box-sizing: border-box;
+
+	background-color: orange;
+
+	.rover {
+		display: grid;
+		grid-template-rows: auto auto;
+		text-align: center;
+		gap: 5px;
+
+		.roverHeader {
+			border-radius: 20px;
+			height: 60px;
+			line-height: 60px;
+			font-size: 30px;
+			background-size: cover;
+			background-position: center;
+			color: white;
+			-webkit-text-stroke-width: 1px;
+			-webkit-text-stroke-color: rgba(0, 0, 0, 1);
+			border: solid black;
+			width: 80%;
+			place-self: center;
+		}
+
+		.Curiosity {
+			background-image: url("../../assets/curiosity.jpg")
+		}
+
+		.Perseverance {
+			background-image: url("../../assets/perseverance.jpg")
+		}
+	}
+}
+
+.loading {
+	justify-self: center;
+}

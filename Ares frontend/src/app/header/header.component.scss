@@ -1,0 +1,28 @@
+.headerWrapper{
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    height: 35px;
+    place-items: center;
+    gap: 1px;
+
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../assets/dunes.jpg");
+    font-size: 30px;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 1);
+}
+
+.headerItem {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+img {
+    margin: auto;
+    height: 30px;
+}

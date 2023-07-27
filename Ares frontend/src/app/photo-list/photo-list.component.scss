@@ -1,0 +1,19 @@
+:host { 
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+	.photo {
+		position: relative;
+
+		img {
+			width: 100%;
+		}
+		.overlayIcon {
+			position: absolute;
+			width: 20px;
+			right: 10px;
+			top: 10px;
+		}
+	}
+}

@@ -1,0 +1,10 @@
+#favorites {
+	height: calc(100vh - 85px);
+	overflow-y: auto;
+    background-color: orange;
+    display: grid;
+}
+
+.loading {
+	justify-self: center;
+}

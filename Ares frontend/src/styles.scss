@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.selectControls {
+	.mat-pseudo-checkbox {
+		display: none !important;
+	}
+	span {
+		width: 100%;
+		opacity: 1 !important;
+		display: grid;
+		grid-template-columns: auto auto;
+		place-items: center;
+	}
+}

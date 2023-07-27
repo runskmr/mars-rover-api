@@ -1,0 +1,11 @@
+<app-header></app-header>
+<app-nav-bar></app-nav-bar>
+<div id="favorites">
+  <app-photo-list *ngIf="!photoService.isLoading; else loading" [photos]=favoriteResults></app-photo-list>
+</div>
+
+
+<ng-template #loading>
+	<img class="loading" src="assets/loading-spinner.svg" alt="Loading Spinner"/>
+</ng-template>
+

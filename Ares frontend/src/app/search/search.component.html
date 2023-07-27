@@ -1,0 +1,82 @@
+<app-header></app-header>
+<app-nav-bar></app-nav-bar>
+<div id="search">
+	<form id="searchForm" [formGroup]="searchForm" (ngSubmit)="search()">
+		<mat-form-field>
+			<mat-label>Rover</mat-label>
+			<mat-select formControlName="rovers" multiple>
+				<mat-option disabled="disabled" class="selectControls">
+				  <button mat-button (click)="selectAll(true)">
+					Select All
+				  </button>
+				  <button mat-button (click)="deselectAll(true)">
+					Clear All
+				  </button>
+				</mat-option>
+				<mat-option *ngFor="let rover of ROVERS" [value]="rover">{{rover}}</mat-option>
+			</mat-select>
+			<mat-error *ngIf="searchForm.controls.rovers.hasError('required')">
+				At least 1 rover is required
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Camera</mat-label>
+			<mat-select formControlName="cameras" multiple>
+				<mat-option disabled="disabled" class="selectControls">
+					<button mat-button (click)="selectAll(false)">
+						Select All
+					</button>
+					<button mat-button (click)="deselectAll(false)">
+						Clear All
+					</button>
+				</mat-option>
+				<mat-option *ngFor="let camera of CAMERAS | keyvalue" [value]="camera.key">{{camera.value}}</mat-option>
+			</mat-select>
+			<mat-error *ngIf="searchForm.controls.cameras.hasError('required')">
+				At least 1 camera is required
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Date range</mat-label>
+			<mat-date-range-input [formGroup]="searchForm" [rangePicker]="picker" [min]="FIRST_DATE" [max]="today">
+				<input matStartDate formControlName="startDate" placeholder="Start date">
+				<input matEndDate formControlName="endDate" placeholder="End date">
+			</mat-date-range-input>
+			<mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+			<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-date-range-picker #picker></mat-date-range-picker>
+			<mat-error *ngIf="searchForm.controls.startDate.hasError('matDatepickerMin') || searchForm.controls.startDate.hasError('matDatepickerMax') || searchForm.controls.startDate.hasError('matDatepickerParse')">
+				Invalid start date
+			</mat-error>
+			<mat-error *ngIf="searchForm.controls.endDate.hasError('matDatepickerMin') || searchForm.controls.endDate.hasError('matDatepickerMax') || searchForm.controls.endDate.hasError('matDatepickerParse')">
+				Invalid end date
+			</mat-error>
+			<mat-error *ngIf="searchForm.controls.endDate.hasError('matEndDateInvalid') || searchForm.controls.startDate.hasError('matStartDateInvalid')">
+				Start date must be before end date
+			</mat-error>
+			<mat-error *ngIf="searchForm.controls.endDate.hasError('invalidRange')">
+				Max date range is 7 days
+			</mat-error>
+			<mat-error *ngIf="searchForm.controls.startDate.hasError('required') || searchForm.controls.endDate.hasError('required')">
+				Date range is required
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Favorite</mat-label>
+			<mat-select formControlName="favorite">
+				<mat-option value="all">All</mat-option>
+				<mat-option value="yes">Favorited</mat-option>
+				<mat-option value="no">Not Favorited</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<button type="submit" mat-fab [disabled]="!searchForm.valid">
+			<img id="searchButton" src="assets/magnifying-glass-solid.svg">
+		</button>
+	</form>
+	<app-photo-list id="searchResults" *ngIf="!photoService.isLoading; else loading" [photos]=searchResults></app-photo-list>
+</div>
+
+<ng-template #loading>
+	<img class="loading" src="assets/loading-spinner.svg" alt="Loading Spinner"/>
+</ng-template>
+
